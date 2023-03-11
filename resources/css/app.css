@@ -1,0 +1,52 @@
+@import './core.css';
+@import './theme-default.css';
+@import './demo.css';
+
+
+@import './../fonts/fontawesome.css';
+@import './../fonts/tabler-icons.css';
+@import './../fonts/flag-icons.css';
+
+
+@import '/public/vuexy-vendor-assets/libs/perfect-scrollbar/perfect-scrollbar.css';
+@import '/public/vuexy-vendor-assets/libs/node-waves/node-waves.css';
+@import '/public/vuexy-vendor-assets/libs/typeahead-js/typeahead.css';
+@import '/public/vuexy-vendor-assets/libs/apex-charts/apex-charts.css';
+@import '/public/vuexy-vendor-assets/libs/swiper/swiper.css';
+
+@import '/public/vuexy-vendor-assets/libs/datatables-bs5/datatables.bootstrap5.css';
+@import '/public/vuexy-vendor-assets/libs/datatables-responsive-bs5/responsive.bootstrap5.css';
+@import '/public/vuexy-vendor-assets/libs/datatables-buttons-bs5/buttons.bootstrap5.css';
+@import '/public/vuexy-vendor-assets/libs/datatables-checkboxes-jquery/datatables.checkboxes.css';
+@import '/public/vuexy-vendor-assets/libs/flatpickr/flatpickr.css';
+@import '/public/vuexy-vendor-assets/libs/select2/select2.css';
+@import '/public/vuexy-vendor-assets/libs/formvalidation/dist/css/formValidation.min.css';
+@import '/public/vuexy-vendor-assets/libs/dropzone/dropzone.css';
+@import '/public/vuexy-vendor-assets/libs/quill/typography.css';
+@import '/public/vuexy-vendor-assets/libs/quill/katex.css';
+@import '/public/vuexy-vendor-assets/libs/quill/editor.css';
+@import '/public/vuexy-vendor-assets/libs/animate-css/animate.css';
+@import '/public/vuexy-vendor-assets/libs/sweetalert2/sweetalert2.css';
+
+
+
+@import './pages/advanced-wizard.css';
+@import './pages/cards-advance.css';
+@import './pages/page-account-settings.css';
+@import './pages/page-auth.css';
+@import './pages/page-icons.css';
+@import './pages/page-misc.css';
+@import './pages/page-pricing.css';
+@import './pages/page-profile.css';
+@import './pages/page-user-view.css';
+@import './pages/page-ama.css';
+@import './pages/page-help-center.css';
+@import './pages/page-faq.css';
+@import './pages/page-app-email.css';
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
