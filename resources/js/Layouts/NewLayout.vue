@@ -166,6 +166,13 @@ const logout = () => {
         <div data-i18n="Email">Products</div>
           </Link>
     </li>
+                    <li class="menu-item">
+                        <Link :href="route('catagories')"
+       class="menu-link">
+        <i class="menu-icon tf-icons ti ti-tag"></i>
+        <div data-i18n="Email">Catagories</div>
+          </Link>
+    </li>
     <!---->
     <!-- <li class="menu-item" style="">
       <a href="javascript:void(0);" class="menu-link menu-toggle">

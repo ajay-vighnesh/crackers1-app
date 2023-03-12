@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AddresController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\CatagoriesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -72,10 +73,23 @@ Route::middleware([
     Route::get('/admin', function () {
         return Inertia::render('Admin');
     })->name('admin');
-    
-    Route::get('/catagories', function () {
+  
+    //  catagories //
+
+    Route::get('/admin/catagories', function () {
         return Inertia::render('Catagories');
     })->name('catagories');
+
+    Route::get('/admin/catagories/new', function () {
+        return Inertia::render('AddCatagories');
+    })->name('addcatagories');
+
+    Route::post('/admin/catagories/new', [CatagoriesController::class, 'addCatagories'])->name('addcatagories');
+
+    Route::post('/admin/catagories/viewall',[CatagoriesController::class, 'index'])->name('viewcatagories');
+    Route::get('/admin/catagories/viewall',[CatagoriesController::class, 'create'])->name('allcatagories');
+
+    // catagories //
    
     Route::get('/admin/products/projects', function () {
         return Inertia::render('Projects');
@@ -89,6 +103,7 @@ Route::middleware([
     Route::get('/admin/customers', function () {
         return Inertia::render('Customers');
     })->name('customers');
+
     
     Route::get('/admin/customers/new', function () {
         return Inertia::render('AddCustomers');
@@ -97,6 +112,7 @@ Route::middleware([
     Route::post('/admin/customers/new', [CustomersController::class, 'addCustomers'])->name('addcustomers');
     
     Route::post('/admin/customers/viewall',[CustomersController::class, 'index'])->name('viewcustomers');
+
     Route::get('/admin/customers/viewall',[CustomersController::class, 'create'])->name('allcustomers');
 
     
@@ -154,12 +170,14 @@ Route::middleware([
     
     // Route::get('/edit/{ row.id }}', [ProductController::class, 'show'])->name('editproducts');
     
-    Route::get('/admin/products/{id}/edit', [ProductController::class, 'show'])->name('editproducts');
+    Route::get('/admin/products/{id}/edit', [ProductController::class, 'show'])->name('products.edit');
+
+    Route::post('/admin/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
     
-    Route::get('/admin/products/{id}/delete', [ProductController::class, 'delete'])->name('editproducts');
+    Route::delete('/admin/products/{id}', [ProductController::class, 'delete'])->name('products.delete');
     
     
-    // Route::get('/admin/products/{id}/edit/${props.id}', [ProductController::class, 'show'])->name('editproducts');
+    // Route::get('/admin/products/{id}/edit', [ProductController::class, 'show'])->name('editproducts');
 
     
     // Route::post('/admin/product/{id}/edit', 'ProductController@edit');

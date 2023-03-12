@@ -34,7 +34,7 @@ class ProductController extends Controller
 
         $products->delete();
 
-        return Redirect::to('/');
+        return Redirect::to('/admin/products/viewall');
 
     //     $product =Product::where('id',$request->id)->first();
 
@@ -57,7 +57,8 @@ class ProductController extends Controller
 
         // dd(Product::find($request->id));
         return Inertia::render('EditProducts', [
-            'products' => Product::latest()->get(),
+            'product' => Product::find($request->id),
+
          ]);
 
         //  $products = Product::find($id);
@@ -71,33 +72,38 @@ class ProductController extends Controller
         // ]);
 
     }
+    
+    public function update(Request $request)
+    {
+        $products = product::find($request->id);
+        $products->name = $request->name;
+        $products->catagories = $request->catagories;
+        $products->description = $request->description;
+        $products->price = $request->price;
+        $products->image = $request->image;
+        $products->save();
+
+        return Redirect::to('/admin/products/viewall');
+        
+    }
 
     
     public function addProduct(AddProductRequest $request)
     {
+
+        $destination_path = 'public';
+        $image = $request->file('image');
+        $image_name = $image->getClientOriginalName();
+        $image->storeAs($destination_path,$image_name);
+        
+
         Product::create([
             'name' => $request->name,
+            'catagories' => $request->catagories,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $request->image,
-
-            // $fileName = time().$request->file('image')->getClientOriginalExtension(),
-            // $path = $request->file('image')->storeAs('images',$fileName,'public'),
-            // $requestData["image"] = '/storage/'.$path,
-           
-            
+            'image' => $image_name,
         ]);
-
-        $input = $request-> all();
-        if($request->hasFile('image'))
-        {
-            $destination_path = 'public/images/products';
-            $image = $request->file('image');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($destination_path,$image_name);
-
-            $input['image'] = $image_name;
-        }
 
         return Product::all();
     }

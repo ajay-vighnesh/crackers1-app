@@ -4,80 +4,19 @@ import { ref, onMounted } from "vue";
 import { useForm, router } from "@inertiajs/vue3";
 import axios from "axios";
 
-// import { Vue } from "vue";
-
-
-// export default {
-//     data() {
-//         return {
-//                     name: '',
-//                     description: '',
-//                     price: '',
-//                     image: ''
-//                 };
-//             },
-//             methods:{
-//                 async edit() {
-//                     try{
-//                         await axios.post('');
-
-//                     }
-//                 }
-//             }
-//         }
-
-// new Vue({
-//   el: '#products',
-//   data: [] ,
-//     return :{
-//         errorList: '',
-//         model: {
-//                 products: {
-//                     name: '',
-//                     description: '',
-//                     price: '',
-//                     image: ''
-//                 }
-//             }
-//   }
-// })
-
-// new //
 
 let form = ref({
-    id:'',
-    name:'',
-    description:'',
-    price:'',
-    image:''
-})
-
-onMounted(async () => {
-    getsingleProducts()
-})
+    id: props.product.id,
+    name: props.product.name,
+    description: props.product.description,
+    price: props.product.price,
+    image: props.product.image,
+});
 
 const props = defineProps({
-    id:{
-        type:String,
-        default:''
-    }
-})
+    product: Object,
+});
 
-const getsingleProducts = async () => {
-    let response = await axios.get('/admin/products/{id}/edit/${props.id}')
-    form.value = response.data.products
-}
-// //
-
-// const form = useForm({
-//     project_name: "",
-//     sitemap_path: "",
-//     csrf: "",
-// });
-
-// const props = defineProps({
-//     products: Object,
-// });
 
 onMounted(() => {
     let dataTablesJS = document.getElementById("datatables-js");
@@ -97,11 +36,9 @@ onMounted(() => {
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content");
 
-    // console.log(this.$route.params.id);
-    // this.getProductsData(this.$route.id);
+    console.log(props.product);
 });
 
-// });
 </script>
 
 <template>
@@ -112,7 +49,7 @@ onMounted(() => {
             >
                 <div class="p-3 mb-2 bg-light text-dark">Edit Products</div>
 
-                <div class="row" id="products">
+                <div class="row" id="#app">
                     <div class="col-lg-12">
                         <div class="card p-4 h-100 rounded">
                             <div class="mb-3 fv-plugins-icon-container">
@@ -120,7 +57,7 @@ onMounted(() => {
 
                                 <form
                                     method="POST"
-                                    action="'/admin/products/{id}/edit'"
+                                    action="/admin/products/{id}/update"
                                 >
                                     <!-- <input
                                         type="hidden"
@@ -131,8 +68,16 @@ onMounted(() => {
                                     <label for="firstName" class="form-label"
                                         >Title</label
                                     >
-                                    <input class="form-control rounded w-100" type="text" name="name" placeholder="Crackers Name" autofocus="" v-model="form.name">
-                                    
+                                    <input
+                                        class="form-control rounded w-100"
+                                        type="text"
+                                        name="name"
+                                        placeholder="Crackers Name"
+                                        autofocus=""
+                                        v-model="form.name"
+                                    />
+                                    <!-- <input v-model="form.name" /> -->
+
                                     <br /><br />
 
                                     <label for="firstName" class="form-label"
@@ -143,7 +88,8 @@ onMounted(() => {
                                         type="text"
                                         name="description"
                                         placeholder="Description"
-                                        autofocus="" v-model="form.description"
+                                        autofocus=""
+                                        v-model="form.description"
                                     />
                                     <br />
                                     <br />
@@ -156,11 +102,13 @@ onMounted(() => {
                                         type="text"
                                         name="price"
                                         placeholder="Price"
-                                        autofocus="" v-model="form.price"
+                                        autofocus=""
+                                        v-model="form.price"
                                     />
                                     <br />
                                     <br />
 
+                                    <img width="200" height="150" :src="'/storage/' +form.image" />
                                     <input
                                         class="form-control"
                                         type="file"
@@ -170,7 +118,6 @@ onMounted(() => {
                                     />
                                     <br />
                                     <br />
-                                    <!-- <input class="form-control" name="photo" type="file" id="photo"> <br> <br> -->
 
                                     <a href="">
                                         <button
@@ -179,7 +126,7 @@ onMounted(() => {
                                             id="position-bottom-start"
                                             style="background-color: #7367f0"
                                         >
-                                            Save
+                                            Edit
                                         </button>
                                     </a>
                                 </form>
@@ -187,8 +134,6 @@ onMounted(() => {
                                     class="fv-plugins-message-container invalid-feedback"
                                 ></div>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>

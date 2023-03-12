@@ -13,14 +13,43 @@ const form = useForm({
 });
 
 const props = defineProps({
-    products: Object,
+    catagories: Object,
 });
 
-const submit = (product_id) => {
-    form.delete(route('products.delete', product_id ), {
+const submit = (catagories_id) => {
+    form.delete(route('catagories.delete', catagories_id ), {
     });
 };
 
+// const productsdata = ref(null)
+
+// function  getProductsData(){
+//                     axios.get('/view/allproducts').then((response)=>{
+
+//                         productsdata.value = response.data;
+
+//                     }).catch((error)=>{
+//                         console.log(error)
+//                     });
+//                 }
+// const submit = () => {
+
+//     form.transform(data => ({
+//         ...data,
+//     })).post(route('projects.store'));
+// };
+
+// onMounted(() => {
+
+// let dashboardJS = document.getElementById('dashboard-js')
+// if (dashboardJS != null) {
+//     dashboardJS.remove()
+// }
+
+// let dashboardScript = document.createElement('script')
+// dashboardScript.setAttribute('src', '/public/vuexy-vendor-assets/js/dashboard.js')
+// dashboardScript.setAttribute('id', 'dashboard-js')
+// document.body.appendChild(dashboardScript)
 
 onMounted(() => {
     // getProductsData();
@@ -56,12 +85,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <NewLayout title="ViewProducts">
+    <NewLayout title="ViewCatagories">
         <template #content>
             <div
                 class="max-w-7xl mx-auto container-xxl py-3 mb-4 sm:px-6 lg:px-8"
             >
-                <div class="p-3 mb-2 bg-light text-dark">View Products</div>
+                <div class="p-3 mb-2 bg-light text-dark">View Catagories</div>
 
                 <div class="card">
                     <div class="card-datatable table-responsive">
@@ -137,7 +166,7 @@ onMounted(() => {
                                                     ></span>
                                                 </button>
                                             </div>
-                                            <a href="/admin/products/new">
+                                            <a href="/admin/catagories/new">
                                                 <button
                                                     class="btn btn-secondary add-new btn-primary"
                                                     style="
@@ -155,7 +184,7 @@ onMounted(() => {
                                                         ></i
                                                         ><span
                                                             class="d-none d-sm-inline-block"
-                                                            >Add Products</span
+                                                            >Add Catagories</span
                                                         ></span
                                                     >
                                                 </button>
@@ -164,7 +193,7 @@ onMounted(() => {
                                     </div>
                                 </div>
                             </div>
-                            <div id="products">
+                            <div id="catagories">
                                 <table
                                     class="datatables-users table border-top dataTable no-footer dtr-column"
                                     id="DataTables_Table_0"
@@ -176,30 +205,26 @@ onMounted(() => {
                                             <th class="control sorting_disabled dtr-hidden" rowspan="1" colspan="1" style="width: 0px; display: none;" aria-label=""></th>
                                             <th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 17px;" data-col="1" aria-label=""><input type="checkbox" class="form-check-input"></th>
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 324px;" aria-label="Id: activate to sort column ascending">ID</th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 324px;" aria-label="Name: activate to sort column ascending">Name</th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 324px;" aria-label="Name: activate to sort column ascending">Catagory</th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 307px;" aria-label="Email: activate to sort column ascending">Description</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 324px;" aria-label="Name: activate to sort column ascending">Catagory Name</th>
+                                            <!-- <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 307px;" aria-label="Email: activate to sort column ascending">Description</th>
                                             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 110px;" aria-label="Date: activate to sort column ascending">Price</th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 107px;" aria-label="Salary: activate to sort column ascending">Image</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 107px;" aria-label="Salary: activate to sort column ascending">Image</th> -->
                                             <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 95px;" aria-label="Actions">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- <tr class="odd" v-for="(row,index,key) in productsdata" :key="row.id"> -->
                                         <tr
                                             class="odd"
                                             v-for="(
                                                 row, index, key
-                                            ) in products"
+                                            ) in catagories"
                                             v-blind:key="row.id"
                                         >
                                             
                                             <td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td></td>
                                             <td>{{ row.id }}</td>
                                             <td>{{ row.name }}</td>
-                                            <td>{{ row.catagories }}</td>
-                                            <td>{{ row.description }}</td>
-                                            <td>{{ row.price }}</td>
-                                            <td>{{ row.image }}</td>
                   <!-- <td><div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false"><i class="text-primary ti ti-dots-vertical"></i></a><ul class="dropdown-menu dropdown-menu-end m-0" style=""><li><a href="javascript:;" class="dropdown-item">Details</a></li><li><a href="javascript:;" class="dropdown-item">Archive</a></li><div class="dropdown-divider"></div><li><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></li></ul></div><a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a></td> -->
                                             <!-- <td><button><a href="javascript:void(0)" @click="('openEditWindow', row)" class="btn btn-secondary">Edit</a></button></td> -->
                                             <td>

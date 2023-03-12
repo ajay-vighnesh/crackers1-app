@@ -9,7 +9,9 @@ const form = useForm({
     csrf: "",
 });
 
-
+const props = defineProps({
+    catagories: Object,
+});
 
 // const submit = () => {
 
@@ -58,6 +60,7 @@ onMounted(() => {
                                 <form
                                     method="POST"
                                     action="/admin/products/new"
+                                    enctype="multipart/form-data"
                                 >
                                     <input
                                         type="hidden"
@@ -76,6 +79,38 @@ onMounted(() => {
                                         autofocus=""
                                     />
                                     <br /><br />
+                                    <div id="catagories">
+
+                                    <label for="firstName" class="form-label"
+                                        >Catagory</label
+                                    >
+                                    <select name="catagories" class="form-control" >
+                                        <!-- <li v-for="catagories in viewcatagories">
+                                            {{ catagories.message }}
+                                        </li> -->
+
+                                        <div
+                                            class="odd"
+                                            v-for="(
+                                                row, index, key
+                                            ) in catagories"
+                                            v-blind:key="row.id"
+                                        ></div>
+
+                                        <!-- <td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td></td>
+                                            <td>{{ row.id }}</td>
+                                            <td>{{ row.name }}</td> -->
+
+                                            <!-- <li v-for="catagories in catagories">
+                                                {{ catagories.name }}
+                                            </li> -->
+                                            
+                                        <option value="{{ $row }}"></option>
+                                        <!-- <option v-for="row in categories" :value="row.id">@{{ row.id }}</option> -->
+
+                                    </select>
+                                    <br /><br />
+                                </div>
 
                                     <label for="firstName" class="form-label"
                                         >Description</label

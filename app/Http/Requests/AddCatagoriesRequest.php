@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AddProductRequest extends FormRequest
+class AddCatagoriesRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -17,10 +17,6 @@ class AddProductRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'catagories' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-            'price' => ['required'],
-            'image' => ['required']
         ];
     }
 }
