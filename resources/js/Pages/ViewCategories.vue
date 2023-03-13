@@ -13,11 +13,11 @@ const form = useForm({
 });
 
 const props = defineProps({
-    catagories: Object,
+    categories: Object,
 });
 
-const submit = (catagories_id) => {
-    form.delete(route('catagories.delete', catagories_id ), {
+const submit = (categories_id) => {
+    form.delete(route('categories.delete', categories_id ), {
     });
 };
 
@@ -85,12 +85,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <NewLayout title="ViewCatagories">
+    <NewLayout title="ViewCategories">
         <template #content>
             <div
                 class="max-w-7xl mx-auto container-xxl py-3 mb-4 sm:px-6 lg:px-8"
             >
-                <div class="p-3 mb-2 bg-light text-dark">View Catagories</div>
+                <div class="p-3 mb-2 bg-light text-dark">View Categories</div>
 
                 <div class="card">
                     <div class="card-datatable table-responsive">
@@ -106,7 +106,8 @@ onMounted(() => {
                                             id="DataTables_Table_0_length"
                                         >
                                             <label
-                                                ><select
+                                                >
+                                                <!-- <select
                                                     name="DataTables_Table_0_length"
                                                     aria-controls="DataTables_Table_0"
                                                     class="form-select"
@@ -123,7 +124,8 @@ onMounted(() => {
                                                     <option value="100">
                                                         100
                                                     </option>
-                                                </select></label
+                                                </select> -->
+                                                </label
                                             >
                                         </div>
                                     </div>
@@ -137,25 +139,27 @@ onMounted(() => {
                                             class="dataTables_filter"
                                         >
                                             <label
-                                                ><input
+                                                >
+                                                <!-- <input
                                                     type="search"
                                                     class="form-control"
                                                     placeholder="Search.."
                                                     aria-controls="DataTables_Table_0"
-                                            /></label>
+                                            /> -->
+                                        </label>
                                         </div>
                                         <div
                                             class="dt-buttons btn-group flex-wrap"
                                         >
                                             <div class="btn-group">
-                                                <button
+                                                <!-- <button
                                                     class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary mx-3"
                                                     tabindex="0"
                                                     aria-controls="DataTables_Table_0"
                                                     type="button"
                                                     aria-haspopup="dialog"
                                                     aria-expanded="false"
-                                                >
+                                                > 
                                                     <span
                                                         ><i
                                                             class="ti ti-screen-share me-1 ti-xs"
@@ -164,9 +168,9 @@ onMounted(() => {
                                                     ><span
                                                         class="dt-down-arrow"
                                                     ></span>
-                                                </button>
+                                                </button> -->
                                             </div>
-                                            <a href="/admin/catagories/new">
+                                            <a href="/admin/categories/new">
                                                 <button
                                                     class="btn btn-secondary add-new btn-primary"
                                                     style="
@@ -184,7 +188,7 @@ onMounted(() => {
                                                         ></i
                                                         ><span
                                                             class="d-none d-sm-inline-block"
-                                                            >Add Catagories</span
+                                                            >Add Categories</span
                                                         ></span
                                                     >
                                                 </button>
@@ -193,7 +197,7 @@ onMounted(() => {
                                     </div>
                                 </div>
                             </div>
-                            <div id="catagories">
+                            <div id="categories">
                                 <table
                                     class="datatables-users table border-top dataTable no-footer dtr-column"
                                     id="DataTables_Table_0"
@@ -218,7 +222,7 @@ onMounted(() => {
                                             class="odd"
                                             v-for="(
                                                 row, index, key
-                                            ) in catagories"
+                                            ) in categories"
                                             v-blind:key="row.id"
                                         >
                                             

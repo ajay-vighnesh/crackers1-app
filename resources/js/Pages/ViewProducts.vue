@@ -77,7 +77,8 @@ onMounted(() => {
                                             id="DataTables_Table_0_length"
                                         >
                                             <label
-                                                ><select
+                                                >
+                                                <!-- <select
                                                     name="DataTables_Table_0_length"
                                                     aria-controls="DataTables_Table_0"
                                                     class="form-select"
@@ -94,7 +95,8 @@ onMounted(() => {
                                                     <option value="100">
                                                         100
                                                     </option>
-                                                </select></label
+                                                </select> -->
+                                                </label
                                             >
                                         </div>
                                     </div>
@@ -108,18 +110,20 @@ onMounted(() => {
                                             class="dataTables_filter"
                                         >
                                             <label
-                                                ><input
+                                                >
+                                                <!-- <input
                                                     type="search"
                                                     class="form-control"
                                                     placeholder="Search.."
                                                     aria-controls="DataTables_Table_0"
-                                            /></label>
+                                            /> -->
+                                        </label>
                                         </div>
                                         <div
                                             class="dt-buttons btn-group flex-wrap"
                                         >
                                             <div class="btn-group">
-                                                <button
+                                                <!-- <button
                                                     class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary mx-3"
                                                     tabindex="0"
                                                     aria-controls="DataTables_Table_0"
@@ -135,7 +139,7 @@ onMounted(() => {
                                                     ><span
                                                         class="dt-down-arrow"
                                                     ></span>
-                                                </button>
+                                                </button> -->
                                             </div>
                                             <a href="/admin/products/new">
                                                 <button
@@ -196,7 +200,7 @@ onMounted(() => {
                                             <td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td></td>
                                             <td>{{ row.id }}</td>
                                             <td>{{ row.name }}</td>
-                                            <td>{{ row.catagories }}</td>
+                                            <td>{{ row.categories }}</td>
                                             <td>{{ row.description }}</td>
                                             <td>{{ row.price }}</td>
                                             <td>{{ row.image }}</td>

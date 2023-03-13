@@ -60,9 +60,9 @@ class User extends Authenticatable
     ];
 
 
-    public function catagories()
+    public function categories()
     {
-        return $this->hasOne(Catagories::class);
+        return $this->hasMany(Categories::class);
     }
 
 }

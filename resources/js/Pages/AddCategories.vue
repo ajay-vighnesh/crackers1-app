@@ -42,12 +42,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <NewLayout title="AddCatagories">
+    <NewLayout title="AddCategories">
         <template #content>
             <div
                 class="max-w-7xl mx-auto container-xxl py-3 mb-4 sm:px-6 lg:px-8"
             >
-                <div class="p-3 mb-2 bg-light text-dark">Add Catagories</div>
+                <div class="p-3 mb-2 bg-light text-dark">Add Categories</div>
 
             <!-- <v-if >
                 <div class="alert alert-success">{{ message }}</div>
@@ -61,7 +61,7 @@ onMounted(() => {
 
                                 <form
                                     method="POST"
-                                    action="/admin/catagories/new"
+                                    action="/admin/categories/new"
                                     
                                 >
                                     <input
@@ -77,7 +77,7 @@ onMounted(() => {
                                         class="form-control rounded w-100"
                                         type="text"
                                         name="name"
-                                        placeholder="Catagories Name"
+                                        placeholder="Categories Name"
                                         autofocus=""
                                     />
                                     <br /><br />

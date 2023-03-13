@@ -5,10 +5,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AddresController;
 use App\Http\Controllers\CustomersController;
-use App\Http\Controllers\CatagoriesController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Categories;
  
 /*
 |--------------------------------------------------------------------------
@@ -48,17 +49,29 @@ Route::middleware([
         return Inertia::render('Profile');
     })->name('profile');
     
+    Route::get('/admin/discount', function () {
+        return Inertia::render('Discount');
+    })->name('discount');
+   
     Route::get('/admin/products', function () {
         return Inertia::render('Products');
     })->name('products');
  
     Route::get('/admin/products/new', function () {
-        return Inertia::render('AddProducts');
+        return Inertia::render('AddProducts', [
+            'categories' => Categories::all(),
+        ]);
     })->name('addproducts');
     
     Route::get('/admin/collections/new', function () {
         return Inertia::render('AddCollections');
     })->name('addcollections');
+   
+    Route::get('/admin/discount/new', function () {
+        return Inertia::render('AddDiscount',[
+            'categories' => Categories::all(),
+        ]);
+    })->name('adddiscount');
 
     
     // Route::get('/admin/products/viewall', function () {
@@ -74,22 +87,22 @@ Route::middleware([
         return Inertia::render('Admin');
     })->name('admin');
   
-    //  catagories //
+    //  categories //
 
-    Route::get('/admin/catagories', function () {
-        return Inertia::render('Catagories');
-    })->name('catagories');
+    Route::get('/admin/categories', function () {
+        return Inertia::render('Categories');
+    })->name('categories');
 
-    Route::get('/admin/catagories/new', function () {
-        return Inertia::render('AddCatagories');
-    })->name('addcatagories');
+    Route::get('/admin/categories/new', function () {
+        return Inertia::render('AddCategories');
+    })->name('addcategories');
 
-    Route::post('/admin/catagories/new', [CatagoriesController::class, 'addCatagories'])->name('addcatagories');
+    Route::post('/admin/categories/new', [CategoriesController::class, 'addCategories'])->name('addcategories');
 
-    Route::post('/admin/catagories/viewall',[CatagoriesController::class, 'index'])->name('viewcatagories');
-    Route::get('/admin/catagories/viewall',[CatagoriesController::class, 'create'])->name('allcatagories');
+    Route::post('/admin/categories/viewall',[CategoriesController::class, 'index'])->name('viewcategories');
+    Route::get('/admin/categories/viewall',[CategoriesController::class, 'create'])->name('allcategories');
 
-    // catagories //
+    // categories //
    
     Route::get('/admin/products/projects', function () {
         return Inertia::render('Projects');
@@ -145,8 +158,18 @@ Route::middleware([
     Route::post('/admin/products/viewall',[ProductController::class, 'index'])->name('viewproducts');
     // Route::get('/admin/products/viewall',[ProductController::class, 'index'])->name('viewproducts');
     Route::get('/admin/products/viewall',[ProductController::class, 'create'])->name('allproducts');
+
+
+    
+    Route::get('/admin/products/{id}/edit', [ProductController::class, 'show'])->name('products.edit');
+
+    Route::post('/admin/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
+    
+    Route::delete('/admin/products/{id}', [ProductController::class, 'delete'])->name('products.delete');
+
     
     
+
     Route::get('/admin/products/edit', function () {
         return Inertia::render('EditProducts');
     })->name('editproducts');
@@ -170,11 +193,7 @@ Route::middleware([
     
     // Route::get('/edit/{ row.id }}', [ProductController::class, 'show'])->name('editproducts');
     
-    Route::get('/admin/products/{id}/edit', [ProductController::class, 'show'])->name('products.edit');
-
-    Route::post('/admin/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
     
-    Route::delete('/admin/products/{id}', [ProductController::class, 'delete'])->name('products.delete');
     
     
     // Route::get('/admin/products/{id}/edit', [ProductController::class, 'show'])->name('editproducts');

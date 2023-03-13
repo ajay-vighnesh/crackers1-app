@@ -91,7 +91,8 @@ onMounted(() => {
                                             id="DataTables_Table_0_length"
                                         >
                                             <label
-                                                ><select
+                                                >
+                                                <!-- <select
                                                     name="DataTables_Table_0_length"
                                                     aria-controls="DataTables_Table_0"
                                                     class="form-select"
@@ -108,7 +109,8 @@ onMounted(() => {
                                                     <option value="100">
                                                         100
                                                     </option>
-                                                </select></label
+                                                </select> -->
+                                                </label
                                             >
                                         </div>
                                     </div>

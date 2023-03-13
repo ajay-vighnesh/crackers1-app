@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Categories;
 use App\Http\Requests\AddProductRequest;
 use Inertia\Inertia;
 // use App\Http\Controllers\Redirect;
@@ -26,6 +27,7 @@ class ProductController extends Controller
             'products' => Product::latest()->get(),
         ]);
 
+
     }
 
     public function delete(Request $request){
@@ -36,52 +38,45 @@ class ProductController extends Controller
 
         return Redirect::to('/admin/products/viewall');
 
-    //     $product =Product::where('id',$request->id)->first();
-
-    // if ($post != null) {
-    //     $post->delete();
-    //     return redirect()->route('dashboard')->with(['message'=> 'Successfully deleted!!']);
-    // }
-
-    // return redirect()->route('dashboard')->with(['message'=> 'Wrong ID!!']);
 
     }
 
     public function show(Request $request)
     {
-        // $name = $request->name;
-        // $id = $request->id;
-        // $description = $request->description;
-        // $price = $request->price;
-        // $image = $request->image;
+        
 
         // dd(Product::find($request->id));
         return Inertia::render('EditProducts', [
             'product' => Product::find($request->id),
-
+            // 'catagories' => Catagories::find($request->id),
+ 
          ]);
 
-        //  $products = Product::find($id);
-
-        //  return Inertia::render('EditProducts', [
-        //     'name' => $request->name,
-        //     'id' => $request->id,
-        //     'description' => $request->description,
-        //     'price' => $request->price,
-        //     'image' => $request->image,
-        // ]);
+        
 
     }
     
-    public function update(Request $request)
+    public function update(Request $request, Product $product)
     {
+
         $products = product::find($request->id);
         $products->name = $request->name;
-        $products->catagories = $request->catagories;
+        $products->categories = $request->categories;
         $products->description = $request->description;
         $products->price = $request->price;
         $products->image = $request->image;
         $products->save();
+
+
+        // product::where('id','=',$products)->update([
+        //     'name'=>$request->name,
+        //     'categories'=>$request->categories,
+        //     'description'=>$request->description,
+        //     'price'=>$request->price,
+        //     'image'=>$request->image,
+        // ]);
+
+        
 
         return Redirect::to('/admin/products/viewall');
         
@@ -99,7 +94,7 @@ class ProductController extends Controller
 
         Product::create([
             'name' => $request->name,
-            'catagories' => $request->catagories,
+            'categories' => $request->categories,
             'description' => $request->description,
             'price' => $request->price,
             'image' => $image_name,

@@ -11,14 +11,19 @@ class Product extends Model
 
     //  public $timestamps=false;
 
-    protected $primaryKey = 'id';
+    // protected $primaryKey = 'id';
      protected $fillable = [
         'name',
-        'catagories',
+        'categories',
         'description',
         'price',
         'image'
     ];
+
+    public function categories()
+    {
+        return $this->belongsTo(Categories::class, 'categories');
+    }
 
 
 }

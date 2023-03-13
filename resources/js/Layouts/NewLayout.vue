@@ -158,21 +158,38 @@ const logout = () => {
       </ul>
     </li>
             <!---->
-
+<!-- 
                     <li class="menu-item">
                         <Link :href="route('products')"
        class="menu-link">
         <i class="menu-icon tf-icons ti ti-tag"></i>
         <div data-i18n="Email">Products</div>
           </Link>
-    </li>
-                    <li class="menu-item">
-                        <Link :href="route('catagories')"
-       class="menu-link">
+    </li> -->
+        
+    <!---->
+
+    <li class="menu-item" style="">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons ti ti-tag"></i>
-        <div data-i18n="Email">Catagories</div>
-          </Link>
+        <div data-i18n="Roles &amp; Permissions">Category</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item">
+            <Link :href="route('viewcategories')"
+           class="menu-link">
+            <div data-i18n="Roles">View Catagory</div>
+        </Link>
+        </li>
+        <li class="menu-item">
+            <Link :href="route('addcategories')"
+           class="menu-link">
+            <div data-i18n="Permission">Add Catagory</div>
+        </Link>
+        </li>
+      </ul>
     </li>
+
     <!---->
     <!-- <li class="menu-item" style="">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -212,7 +229,7 @@ const logout = () => {
     </li>
                     
     <li class="menu-item">
-                        <Link :href="route('catagories')"
+                        <Link :href="route('discount')"
        class="menu-link">
         <i class="menu-icon tf-icons ti ti-discount"></i>
         <div data-i18n="Email">Discount</div>
@@ -220,7 +237,7 @@ const logout = () => {
     </li>
    
     <li class="menu-item" href="#" @click="logout">
-                        <Link :href="route('catagories')"
+                        <Link :href="route('categories')"
        class="menu-link" >
        <i class="ti ti-logout me-2 ti-sm"></i>
         <div data-i18n="Email">Log out</div>
@@ -251,11 +268,11 @@ const logout = () => {
                         </div>
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <li class="nav-item me-4">
+                            <!-- <li class="nav-item me-4">
                                 <Link :href="route('admin')" class="btn btn-primary waves-effect waves-light">
                                 <span class="ti-xs ti ti-plus me-2"></span>Create Project
                                 </Link>
-                            </li>
+                            </li> -->
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -263,7 +280,10 @@ const logout = () => {
                                     <div class="avatar  me-2">
                                         <span class="avatar-initial rounded-circle bg-primary">
 
+
                                         </span>
+                                        
+
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
